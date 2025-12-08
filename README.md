@@ -3,6 +3,8 @@
 ### Author: Marco — Full-Stack Developer & AI Workflow Architect
 
 ---
+![Presentazione](https://github.com/user-attachments/assets/dca2cb95-ed87-48e8-8e25-6d8f2f4ba2f6)
+
 
 ## 📌 Abstract
 
