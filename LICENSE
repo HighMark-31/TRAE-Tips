@@ -1,21 +1,27 @@
-MIT License
+## License — HighMark IT Exclusive Protection License (HIEPL-1.0)
 
-Copyright (c) 2025 HighMark-IT
+This document, including all methods, workflows, technical processes, agent architectures, rulesets, optimizations, model-selection strategies, and any other content contained herein, is the exclusive intellectual property of **HighMark IT — Marco N. (HighMark-31 on GitHub)**.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+### Strict Prohibitions
+- You **may not copy**, reproduce, republish, mirror, or distribute any part of this document.
+- You **may not reuse**, adapt, modify, or derive works based on this document.
+- You **may not use, reference, or take inspiration** from any portion of this document for your personal submission or any submission to the **TRAE Global Best Practice Challenge**.
+- You **may not incorporate**, directly or indirectly, the ideas, structure, techniques, or engineering strategies described here into any other work, documentation, codebase, article, or challenge entry.
+- You **may not** upload, share, publish, or redistribute this document on any third-party platform.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Limited Allowed Use
+TRAE, Bytedance, or affiliated reviewers **may read and evaluate** this document *solely* for the purpose of reviewing the submission for the **2025 TRAE Global Best Practice Challenge**.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### ✔ Exclusivity Clause
+This document is **authorized for use only by:**
+
+**HighMark IT — Marco N.  
+GitHub: HighMark-31**
+
+No other individual, team, organization, or entity is permitted to reference, reuse, copy, or reinterpret this content in any form as our name **except** TRAE (Bytedance) that can use for the event.
+
+### Legal Status
+By reading, accessing, reviewing, or storing this document, you agree to all terms of this License (HIEPL-1.0).  
+Unauthorized use will be considered a copyright violation and a breach of protected proprietary material.
+
+© 2025 HighMark IT — All Rights Reserved.
