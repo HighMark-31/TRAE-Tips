@@ -1,4 +1,4 @@
-# 🧵 Whitepaper — My Advanced TRAE Workflow & Agent Engineering  
+# Whitepaper — My Advanced TRAE Workflow & Agent Engineering  
 ### *Submission for the 2025 TRAE Global Best Practice Challenge*  
 ### Author: Marco — Full-Stack Developer & AI Workflow Architect
 
