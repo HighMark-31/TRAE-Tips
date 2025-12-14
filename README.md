@@ -1,3 +1,13 @@
+## 📚 Table of Contents & Navigation
+
+- [Main Whitepaper](#whitepaper----my-advanced-trae-workflow--agent-engineering) - Core concepts and architecture
+- [10 Best Tips](./10BestTips.md) - Quick practical tips for immediate implementation
+- [SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md) - Deep dive into cost optimization
+- [Agents Guide](./AGENTS_GUIDE.md) - Detailed guide to specialized agents
+- [Rulesets Template](./RULESETS.md) - Ready-to-use ruleset examples
+
+---
+
 # Whitepaper — My Advanced TRAE Workflow & Agent Engineering  
 ### *Submission for the 2025 TRAE Global Best Practice Challenge*  
 ### Author: Marco — Full-Stack Developer & AI Workflow Architect
@@ -267,3 +277,55 @@ Date: *2025*
 ## ✨ Final Note
 
 This document summarizes how combining TRAE’s multi-agent capabilities with an optimized model strategy enables a single developer to reach the output of an entire software team — with higher consistency, lower cost, and faster delivery.
+
+
+---
+
+## 📚 Additional Resources & Guides
+
+This repository has been expanded with supplementary documentation for deeper learning:
+
+### 📖 [10 Best Tips](./10BestTips.md)
+Quick, actionable tips extracted from the whitepaper. Perfect for:
+- Quick reference before starting a session
+- Checklist format for workflow optimization
+- Implementation shortcuts
+
+### ⚡ [SOLO + GLM 4.6: Best Combo Guide](./SOLO_BestCombo.md)
+Comprehensive deep-dive on the most cost-effective TRAE setup:
+- Detailed SOLO architecture explanation
+- GLM 4.6 benchmarks and comparisons
+- Step-by-step integration guide
+- Cost analysis and ROI calculations
+- Real production metrics
+
+### 🤖 [Specialized Agents Guide](./AGENTS_GUIDE.md)
+Detailed reference for building and managing AI agents:
+- Agent role definitions and responsibilities
+- Prompt templates for each agent type
+- Context management strategies
+- Agent-to-agent communication patterns
+- Scaling from single to multi-agent systems
+
+### 📋 [Rulesets Template](./RULESETS.md)
+Ready-to-use rule templates and system prompts:
+- Security ruleset (SEC-1, SEC-2, etc.)
+- Quality assurance rulesets
+- Output formatting rules
+- Custom rule creation guide
+- Rule versioning and management
+
+---
+
+## 🚀 Getting Started
+
+1. **First time?** Start with [10 Best Tips](./10BestTips.md) for quick wins
+2. **Ready to optimize costs?** Read [SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md)
+3. **Building a team?** Reference [Agents Guide](./AGENTS_GUIDE.md)
+4. **Need consistency?** Use [Rulesets Template](./RULESETS.md)
+5. **Want the full story?** Read this whitepaper top-to-bottom
+
+---
+
+_Last updated: December 14, 2025_
+_Maintained by: Marco (HighMark-31)_
