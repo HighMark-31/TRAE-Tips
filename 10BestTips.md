@@ -145,6 +145,40 @@ Track these metrics per agent:
 
 ---
 
+## 11. Convert Prompts to JSON for Better Model Understanding
+
+If a model seems to struggle understanding or following your instructions:
+
+1. **Take your natural language prompt** and send it to ChatGPT or Gemini
+2. **Ask them to convert it to JSON format** - this structures your intent clearly
+3. **Use the JSON version in TRAE** - models process structured data far better
+
+**Why it works:**
+JSON formatting forces explicit structure, removing ambiguity and making the model's execution more predictable and accurate.
+
+**Example:**
+
+```json
+{
+  "task": "code_generation",
+  "language": "python",
+  "requirements": [
+    "Write a REST API endpoint",
+    "Handle authentication with JWT",
+    "Return JSON responses"
+  ],
+  "constraints": [
+    "Must follow PEP 8",
+    "No external dependencies except FastAPI"
+  ],
+  "output_format": "Complete, production-ready code with comments"
+}
+```
+
+**Result:** Models understand context better, hallucinate less, and produce higher quality output.
+
+---
+
 ## Quick Checklist Before Each Session
 
 - [ ] Selected correct specialized agent for task
