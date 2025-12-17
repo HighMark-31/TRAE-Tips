@@ -200,5 +200,5 @@ JSON formatting forces explicit structure, removing ambiguity and making the mod
 
 ---
 
-_Last updated: December 14, 2025_
+_Last updated: December 17, 2025_
 _Created by: Marco (HighMark-31)_
