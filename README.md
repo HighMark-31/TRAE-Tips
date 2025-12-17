@@ -400,5 +400,5 @@ Ready-to-use rule templates and system prompts:
 
 ---
 
-_Last updated: December 14, 2025_
+_Last updated: December 17, 2025_
 _Maintained by: Marco (HighMark-31)_
