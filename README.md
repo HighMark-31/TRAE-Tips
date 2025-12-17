@@ -5,6 +5,7 @@
 - [SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md) - Deep dive into cost optimization
 - [Agents Guide](./AGENTS_GUIDE.md) - Detailed guide to specialized agents
 - [Rulesets Template](./RULESETS.md) - Ready-to-use ruleset examples
+- [TRAE-Agents Collection](https://github.com/HighMark-31/TRAE-Agents) - Production-ready AI agents for TRAE ecosystem
 
 ---
 
@@ -379,6 +380,8 @@ Detailed reference for building and managing AI agents:
 - Context management strategies
 - Agent-to-agent communication patterns
 - Scaling from single to multi-agent systems
+- 
+**🔗 For ready-to-use TRAE agents, visit:** [TRAE-Agents Repository](https://github.com/HighMark-31/TRAE-Agents)
 
 ### 📋 [Rulesets Template](./RULESETS.md)
 Ready-to-use rule templates and system prompts:
