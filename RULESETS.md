@@ -120,7 +120,7 @@ BEH-RULE-4: Error Recovery
 - Suggest workarounds
 ```
 
----
+
 
 ## Template: Creating Your Own Ruleset
 
@@ -149,8 +149,6 @@ Applies To:
   - BackendAgent
   - ArchitectAgent
 ```
-
----
 
 ## System Prompt Templates
 
@@ -187,7 +185,7 @@ You are an expert backend engineer specializing in API design.
   "considerations": "..."
 }
 ```
-```
+
 
 ### Documentation Agent
 
@@ -251,7 +249,7 @@ Vulnerabilities:
     remediation: "..."
     references: ["OWASP...", "..."]
 ```
-```
+
 
 ---
 
@@ -345,7 +343,6 @@ Metrics:
     - Clearer error messages
 ```
 
----
 
 ## Quick Start: Use These Rulesets Today
 
@@ -359,5 +356,5 @@ Metrics:
 
 ---
 
-_Last updated: December 14, 2025_
+_Last updated: December 17, 2025_
 _Created by: Marco (HighMark-31)_
