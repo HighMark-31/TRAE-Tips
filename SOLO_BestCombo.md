@@ -249,6 +249,6 @@ Assuming you currently spend $200/month on TRAE credits:
 
 ---
 
-_Last updated: December 14, 2025_
-_Tested on: TRAE 2.1, GLM 4.6 (stable)_
+_Last updated: December 17, 2025_
+_Tested on: TRAE 3.4, GLM 4.6 (stable)_
 _Created by: Marco (HighMark-31)_
