@@ -338,25 +338,12 @@ This **TRAE-Tips** collection documents **proven solutions** to every problem li
 
 ---
 
-
-## 📎 Attachments (recommended for submission)
-
-- screenshots of agents  
-- model comparison benchmarks  
-- TRAE workspace example  
-- before/after code  
-- ruleset snippet  
-- prompt logs  
-- GLM 4.6 API usage metrics  
-
----
-
 ## 📤 Submission Info
 
 Event: **2025 TRAE Global Best Practice Challenge**  
 Link: https://bytedance.larkoffice.com/share/base/form/shrcngbw4403LyFOD2bdEICRkE3  
 Author: **Marco**  
-Date: *2025*  
+Date: *17 December 2025*  
 
 ---
 
