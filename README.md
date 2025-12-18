@@ -13,6 +13,8 @@
 ### *Submission for the 2025 TRAE Global Best Practice Challenge*  
 ### Author: Marco — Full-Stack Developer & AI Workflow Architect
 
+[![Star the project](https://img.shields.io/badge/⭐_Star_the_Project-black?style=for-the-badge)](https://github.com/HighMark-31/TRAE-Tips/stargazers) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=HighMark-31.TRAE-Tips)
+
 ---
 ![Presentazione](https://github.com/user-attachments/assets/dca2cb95-ed87-48e8-8e25-6d8f2f4ba2f6)
 
