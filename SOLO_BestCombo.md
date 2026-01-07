@@ -1,10 +1,10 @@
-# SOLO + GLM 4.6: The Best Combo for TRAE
+# SOLO + GLM 4.7: The Best Combo for TRAE
 
 > The ultimate cost-efficient TRAE setup delivering 10× savings with maintained or improved performance.
 
 ---
 
-## Why SOLO + GLM 4.6?
+## Why SOLO + GLM 4.7?
 
 ### The Problem
 - TRAE's internal credit system burns **$200-300 per 100K tokens**
@@ -12,7 +12,7 @@
 - Multi-agent workflows become prohibitively expensive
 - Organizations bleed money without equivalent productivity gains
 
-### The Solution: SOLO + GLM 4.6
+### The Solution: SOLO + GLM 4.7
 
 **SOLO Architecture:**
 - Optimized for long-form workflows
@@ -20,7 +20,7 @@
 - Superior context preservation
 - Built for agent-based systems
 
-**GLM 4.6 Model:**
+**GLM 4.7 Model:**
 - **Performance:** Comparable to GPT-4.1 / Claude 3.7 / DeepSeek R1
 - **Speed:** 20-40% faster token generation
 - **Cost:** $15-25 per 100K tokens (integrating via z.ai)
@@ -47,13 +47,13 @@ Output
 **Speed:** 25-35 tokens/sec
 **Flexibility:** Limited to TRAE's model catalog
 
-### SOLO + GLM 4.6 (API Integration)
+### SOLO + GLM 4.7 (API Integration)
 ```
 User Input
     ↓
 [SOLO Workflow Manager]
     ↓
-[GLM 4.6 API] (z.ai) → $ (minimal cost)
+[GLM 4.7 API] (z.ai) → $ (minimal cost)
     ↓
 Structured Output
 ```
@@ -78,13 +78,13 @@ Structured Output
 3. Select **SOLO Mode**
 4. Set context window: **8192 tokens** (optimal for most tasks)
 
-### Step 3: Integrate GLM 4.6 API
+### Step 3: Integrate GLM 4.7 API
 1. In TRAE Settings → **External Models**
 2. Click **Add Model**
-   - Name: `GLM-4.6-SOLO`
+   - Name: `GLM-4.7-SOLO`
    - Provider: `z.ai`
    - API Key: [your z.ai key]
-   - Model ID: `glm-4.6`
+   - Model ID: `glm-4.7`
    - Temperature: `0.7` (balanced)
 3. Test connection
 4. Set as default for SOLO workflows
@@ -93,7 +93,7 @@ Structured Output
 ```yaml
 Agent: CodeRefactor
 Architecture: SOLO
-Model: GLM-4.6-SOLO
+Model: GLM-4.7-SOLO
 Context: 8192
 Rules:
   - Never rewrite working code
@@ -113,7 +113,7 @@ Rules:
 - Output: 2000 tokens = 40 credits
 - **Total: 265 credits = ~$26.50**
 
-**Using SOLO + GLM 4.6:**
+**Using SOLO + GLM 4.7:**
 - Input: 15000 tokens = $0.15
 - Model processing = $0.08
 - Output: 2000 tokens = $0.02
@@ -142,13 +142,13 @@ Task: Generate secure authentication module
 │ Model         │ Score   │
 ├──────────┼────────┤
 │ GPT-4.1      │ 9.2/10  │
-│ GLM 4.6 ✅   │ 9.1/10  │
+│ GLM 4.7 ✅   │ 9.1/10  │
 │ Claude 3.7   │ 8.9/10  │
 │ DeepSeek R1  │ 8.8/10  │
 └──────────┴────────┘
 ```
 
-**Conclusion:** GLM 4.6 is on par with premium models but costs 10× less.
+**Conclusion:** GLM 4.7 is on par with premium models but costs 10× less.
 
 ---
 
@@ -160,19 +160,19 @@ Task: Generate secure authentication module
 User Task: "Refactor auth service for performance"
 
 [Input Agent] → Parse requirements
-    ↓ (via SOLO to GLM 4.6)
+    ↓ (via SOLO to GLM 4.7)
 
 [Architect Agent] → Design new structure
-    ↓ (via SOLO to GLM 4.6)
+    ↓ (via SOLO to GLM 4.7)
 
 [Backend Agent] → Implement changes
-    ↓ (via SOLO to GLM 4.6)
+    ↓ (via SOLO to GLM 4.7)
 
 [Security Agent] → Validate security
-    ↓ (via SOLO to GLM 4.6)
+    ↓ (via SOLO to GLM 4.7)
 
 [Documentation Agent] → Write docs
-    ↓ (via SOLO to GLM 4.6)
+    ↓ (via SOLO to GLM 4.7)
 
 [Validator Agent] → Final QA
     ↓
@@ -208,7 +208,7 @@ RULE-FORMAT: Always respond in JSON when handling code tasks
 RULE-VALIDATION: Validate JSON before returning
 ```
 
-### Issue: "GLM 4.6 slower than expected"
+### Issue: "GLM 4.7 slower than expected"
 **Solution:** Verify settings:
 - Temperature: 0.7 (recommended)
 - Max tokens: 4096 (optimal)
@@ -241,7 +241,7 @@ Assuming you currently spend $200/month on TRAE credits:
 
 ## Key Takeaways
 
-- **SOLO + GLM 4.6 = 10× cost reduction**
+- **SOLO + GLM 4.7 = 10× cost reduction**
 - **Performance is maintained or improved**
 - **Setup takes <1 hour**
 - **No vendor lock-in (can swap models anytime)**
@@ -250,5 +250,5 @@ Assuming you currently spend $200/month on TRAE credits:
 ---
 
 _Last updated: December 17, 2025_
-_Tested on: TRAE 3.4, GLM 4.6 (stable)_
+_Tested on: TRAE 3.4, GLM 4.7 (stable)_
 _Created by: Marco (HighMark-31)_
