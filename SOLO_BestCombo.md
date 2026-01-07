@@ -4,6 +4,8 @@
 
 ---
 
+## [📢 Get 10% Discount on GLM 4.7](https://z.ai/subscribe?ic=XQJUBE1XQN)
+
 ## Why SOLO + GLM 4.7?
 
 ### The Problem
