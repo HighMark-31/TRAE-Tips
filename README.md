@@ -2,7 +2,8 @@
 
 - [Main Whitepaper](#whitepaper----my-advanced-trae-workflow--agent-engineering) - Core concepts and architecture
 - [10 Best Tips](./10BestTips.md) - Quick practical tips for immediate implementation
-- [SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md) - Deep dive into cost optimization
+- [SOLO + GLM 4.7 Best Combo](./SOLO_BestCombo.md) - Deep dive into cost optimization
+-   *📢 **[Get 10% Discount on GLM 4.7](https://z.ai/subscribe?ic=XQJUBE1XQN)** - Use this referral link for 10% off GLM 4.7 Coding Plan*
 - [Agents Guide](./AGENTS_GUIDE.md) - Detailed guide to specialized agents
 - [Rulesets Template](./RULESETS.md) - Ready-to-use ruleset examples
 - [TRAE-Agents Collection](https://github.com/HighMark-31/TRAE-Agents) - Production-ready AI agents for TRAE ecosystem
@@ -23,7 +24,7 @@
 
 This whitepaper documents the full engineering workflow I use to build, automate and scale software development tasks through **TRAE**, combined with custom-built **AI Agents**, strict **Rule Systems**, and an optimized **model selection strategy** based on performance benchmarks from **aicompar.com** and **llmarena.ai**.
 
-I detail how TRAE becomes a real **AI Engineering Team**, how I orchestrate multi-agent execution, and how leveraging **GLM 4.6 (z.ai)** inside TRAE dramatically reduces cost while increasing output efficiency — resulting in a setup up to **10× more cost-effective** than standard usage of TRAE credits.
+I detail how TRAE becomes a real **AI Engineering Team**, how I orchestrate multi-agent execution, and how leveraging **GLM 4.7 (z.ai)** inside TRAE dramatically reduces cost while increasing output efficiency — resulting in a setup up to **10× more cost-effective** than standard usage of TRAE credits.
 
 This best practice is based on real production workflows I use daily as a full-stack developer and team lead.
 
@@ -121,7 +122,7 @@ Example:
 
 ---
 
-### **2.4. Cost Optimization with TRAE + GLM 4.6**
+### **2.4. Cost Optimization with TRAE + GLM 4.7**
 
 This is one of the **core insights** of my workflow.
 
@@ -134,7 +135,7 @@ Use TRAE **with external API keys**, especially:
 
 - **SOLO architecture in TRAE**  
 - paired with  
-- **GLM 4.6 (z.ai)** purchased via the *Coding Plan* (using my referral link)
+- **GLM 4.7 (z.ai)** purchased via the *Coding Plan* (using my referral link)
 
 This brings 3 benefits:
 
@@ -144,7 +145,7 @@ This brings 3 benefits:
 - stable formatting  
 - predictable agent responses  
 
-#### **2. GLM 4.6 is extremely strong for coding**
+#### **2. GLM 4.7 is extremely strong for coding**
 Comparable to:
 - GPT-4.1  
 - Claude 3.7  
@@ -155,12 +156,12 @@ But at a much lower cost.
 Using TRAE credit system:  
 > A single heavy refactor can burn **200–350 credits**.
 
-Using GLM 4.6 API:  
+Using GLM 4.7 API:  
 > The same task costs **up to 10× less**, with stronger performance.
 
 Result:
 
-> **TRAE (SOLO) + GLM 4.6 API = Best performance/cost ratio available in 2025.**
+> **TRAE (SOLO) + GLM 4.7 API = Best performance/cost ratio available in 2025.**
 
 This single optimization alone increased my effective productivity *dramatically*.
 
@@ -173,7 +174,7 @@ Below is a concrete workflow example I use internally.
 ### **Step 1 — Select Best Model per Task**
 Using aicompar.com + llmarena.ai:
 - Compare the top 5 models for the needed task  
-- Choose the best (usually GLM 4.6 for code-heavy work)
+- Choose the best (usually GLM 4.7 for code-heavy work)
 
 ### **Step 2 — Initialize TRAE Workspace**
 Open the repository inside TRAE:
@@ -215,7 +216,7 @@ TRAE handles everything like a senior dev team.
 
 ## 📈 4. Results
 
-By combining TRAE Agents + Rules + SOLO + GLM 4.6 API:
+By combining TRAE Agents + Rules + SOLO + GLM 4.7 API:
 
 ### 🚀 Productivity
 - 4× faster development time
@@ -250,7 +251,7 @@ Working **simultaneously**.
 ### ✔ Maintain strict rules for deterministic output  
 ### ✔ Benchmark models externally before choosing  
 ### ✔ Use SOLO architecture for long, structured workflows  
-### ✔ Use GLM 4.6 API to avoid TRAE credit burn  
+### ✔ Use GLM 4.7 API to avoid TRAE credit burn  
 ### ✔ Validate everything using multi-agent checks  
 ### ✔ Let TRAE handle all refactoring and documentation  
 
@@ -258,7 +259,7 @@ Working **simultaneously**.
 
 ## 🔥 TRAE Cost & Performance: The Hidden Pitfalls Nobody Talks About
 
-### Does TRAE Really Cost Too Much? GLM 4.6 Tips & Common Issues Exposed
+### Does TRAE Really Cost Too Much? GLM 4.7 Tips & Common Issues Exposed
 
 If you're using TRAE without considering these critical bottlenecks, you're likely **burning through credits 10× faster than necessary** and missing out on massive productivity gains.
 
@@ -273,7 +274,7 @@ If you're using TRAE without considering these critical bottlenecks, you're like
 - Each multi-step agent task burns credits exponentially
 - Context window mismanagement can triple your costs
 
-**The Solution:** This is exactly why the **SOLO + GLM 4.6 combo** works—GLM 4.6 API costs **up to 10× less** for identical coding tasks while maintaining superior performance.
+**The Solution:** This is exactly why the **SOLO + GLM 4.7 combo** works—GLM 4.7 API costs **up to 10× less** for identical coding tasks while maintaining superior performance.
 
 #### **2. Excessive Wait Times & Queue Delays**
 
@@ -328,7 +329,7 @@ If you're using TRAE without considering these critical bottlenecks, you're like
 
 This **TRAE-Tips** collection documents **proven solutions** to every problem listed above:
 
-1. **[SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md)** → Cuts costs 10×
+1. **[SOLO + GLM 4.7 Best Combo](./SOLO_BestCombo.md)** → Cuts costs 10×
 2. **[Agents Guide](./AGENTS_GUIDE.md)** → Prevents context window mismanagement
 3. **[Rulesets Template](./RULESETS.md)** → Enforces deterministic output
 4. **[10 Best Tips](./10BestTips.md)** → Quick optimizations for immediate ROI
@@ -367,10 +368,10 @@ Quick, actionable tips extracted from the whitepaper. Perfect for:
 - Checklist format for workflow optimization
 - Implementation shortcuts
 
-### ⚡ [SOLO + GLM 4.6: Best Combo Guide](./SOLO_BestCombo.md)
+### ⚡ [SOLO + GLM 4.7: Best Combo Guide](./SOLO_BestCombo.md)
 Comprehensive deep-dive on the most cost-effective TRAE setup:
 - Detailed SOLO architecture explanation
-- GLM 4.6 benchmarks and comparisons
+- GLM 4.7 benchmarks and comparisons
 - Step-by-step integration guide
 - Cost analysis and ROI calculations
 - Real production metrics
@@ -398,7 +399,7 @@ Ready-to-use rule templates and system prompts:
 ## 🚀 Getting Started
 
 1. **First time?** Start with [10 Best Tips](./10BestTips.md) for quick wins
-2. **Ready to optimize costs?** Read [SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md)
+2. **Ready to optimize costs?** Read [SOLO + GLM 4.7 Best Combo](./SOLO_BestCombo.md)
 3. **Building a team?** Reference [Agents Guide](./AGENTS_GUIDE.md)
 4. **Need consistency?** Use [Rulesets Template](./RULESETS.md)
 5. **Want the full story?** Read this whitepaper top-to-bottom
