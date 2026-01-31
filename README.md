@@ -406,5 +406,13 @@ Ready-to-use rule templates and system prompts:
 
 ---
 
-_Last updated: December 17, 2025_
-_Maintained by: Marco (HighMark-31)_
+## 🔗 Explore More
+
+**Want to know the difference between Agents, Skills, and Rules?**  
+👉 Check out **[Agents VS Rules VS Skills](https://github.com/HighMark-31/TRAE-Tips/blob/main/Agents-Rules-Skills.md)**.
+
+**Looking for a collection of Agents for TRAE?**  
+👉 Read our **[TRAE Agents](https://github.com/HighMark-31/TRAE-Agents)**.
+
+**Looking for some tips on TRAE?**  
+👉 Read our **[TRAE Skills](https://github.com/HighMark-31/TRAE-Skills)**.
