@@ -2,7 +2,7 @@
 
 ## ❌ Why Claude is not available on TRAE
 
-Claude models are **not available inside TRAE** due to restrictions imposed by **Anthropic**, the company behind Claude.
+Claude models are **not available inside TRAE** due to [restrictions imposed by **Anthropic**](https://www.anthropic.com/news/updating-restrictions-of-sales-to-unsupported-regions), the company behind Claude.
 
 Anthropic has decided to **block access to its models for Chinese companies** for **geopolitical and regulatory reasons**.  
 Since **TRAE is developed by ByteDance**, and ByteDance is a **Chinese company**, Claude models cannot be directly integrated or exposed inside TRAE.
