@@ -6,11 +6,17 @@ This affects **everyone**, not just Pro users.
 
 Let’s break it down clearly.
 
+Image and Link reference :
+<img width="2770" height="1144" alt="image" src="https://github.com/user-attachments/assets/fcb9c79f-1dd0-4fff-b050-237840735363" />
+
+<img width="2652" height="1126" alt="image" src="https://github.com/user-attachments/assets/3171a6ff-9a66-47e3-af37-1cd94e1b1965" />
+
+https://www.trae.ai/blog/trae_membership_0213
 ---
 
 # 🔁 Before vs Now
 
-## 🕒 Before (Request-Based Model)
+## Before (Request-Based Model)
 - You had a fixed number of Fast Requests.
 - 1 request = 1 premium model call.
 - Context size didn’t directly impact quota.
@@ -20,7 +26,7 @@ If you had 600 requests → you could make 600 premium calls.
 
 ---
 
-## ⚙️ Now (Token-Based Model)
+## Now (Token-Based Model)
 - Each plan gives a monthly **$ basic usage balance + bonus usage**.
 - Every interaction consumes tokens based on:
   - Input size
@@ -37,9 +43,9 @@ Now:
 
 ---
 
-# ✅ Advantages of the New System
+## ✅ Advantages of the New System
 
-## 🧠 Larger Context Windows
+### Larger Context Windows
 - Regular Mode: up to ~272K tokens  
 - Max Mode: up to 1M tokens  
 - Up to 200 tool calls per session  
@@ -49,11 +55,9 @@ This is a major upgrade for:
 - Long agent workflows
 - Complex automation tasks
 
----
+## ❌ Disadvantages / Trade-Offs
 
-# ❌ Disadvantages / Trade-Offs
-
-## 📉 Less Predictable Usage
+### Less Predictable Usage
 Before:
 - You knew exactly how many calls you had left.
 
@@ -63,7 +67,7 @@ Now:
 
 ---
 
-## ⚠ Heavy Users May Consume Faster
+### Heavy Users May Consume Faster
 If you:
 - Use massive repo contexts
 - Run Max mode often
@@ -73,56 +77,7 @@ Your monthly allowance may drain faster than expected.
 
 ---
 
-# 📊 Plan Comparison (Quick Overview)
-
-## 🟢 Free
-- Limited usage
-- Standard queue
-- 5000 autocomplete/month
-- Limited SOLO
-- Basic model access
-
----
-
-## 🟢 Lite — $3/month
-- $5 basic usage + bonus
-- Fast queue
-- Unlimited autocomplete
-- Limited SOLO
-- Entry-level premium access
-
-Best for light builders.
-
----
-
-## 🟢 Pro — $10/month
-- $20 basic usage + bonus
-- Fast queue (≤15s)
-- Unlimited autocomplete
-- SOLO included
-- Strong balanced tier
-
----
-
-## 🟢 Pro+ — $30/month
-- Everything in Pro
-- 3x usage across models
-
-For frequent builders.
-
----
-
-## 🟢 Ultra — $100/month
-- $400 basic usage + bonus
-- 20x usage
-- Early Access models
-- Full premium stack
-
-Enterprise-level usage.
-
----
-
-# 🔎 Focus: What Changes If You Are a Pro User
+# ⚠️ Focus: What Changes If You Are a Pro User ⚠️
 
 If you are currently Pro:
 
@@ -132,7 +87,7 @@ If you are currently Pro:
 - Potentially more usable sessions (depending on usage pattern)
 - Stronger SOLO mode capability
 
-## ⚠ What Becomes Riskier
+## 👎 What Becomes Riskier
 - Token burn replaces fixed request predictability
 - Heavy sessions may consume allowance faster
 - Early Access model access may require upgrading to Ultra
