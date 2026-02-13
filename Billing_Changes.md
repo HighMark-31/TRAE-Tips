@@ -65,7 +65,6 @@ Now:
 - You must monitor token burn.
 - Large contexts consume budget faster.
 
----
 
 ### Heavy Users May Consume Faster
 If you:
