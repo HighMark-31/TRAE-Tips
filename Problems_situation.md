@@ -1,7 +1,7 @@
 # TRAE – Current Problems & Community Update
 
 > [!WARNING]
-> This document is written by me (HighMark IT [Marco N.], a long-time TRAE community member.
+> This document is written by me (HighMark IT [Marco N.]), a long-time TRAE community member.
 > I am **not affiliated with TRAE or ByteDance** in any official capacity.
 > The information below reflects community discussions, confirmed replies from moderators/team members, and direct conversations I personally initiated.
 > I am actively escalating these concerns internally and will provide updates as soon as concrete information is available.
@@ -64,12 +64,6 @@ The following models are not available in the international version:
 * GLM-5
 * Doubao Seed Code 2.0
 * Qwen 3.5
-
-Current known information:
-
-* Doubao Seed Code 2.0 cannot be added internationally for compilation reasons.
-* GLM integration is uncertain.
-* Qwen 3.5 has been requested but no confirmation yet.
 
 Community expectation:
 Faster integration and clear explanations.
