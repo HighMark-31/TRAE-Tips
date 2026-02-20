@@ -64,14 +64,14 @@ The following models are not available in the international version:
 * GLM-5
 * Doubao Seed Code 2.0
 * Qwen 3.5
+* Gemini 3.1
 
 Community expectation:
 Faster integration and clear explanations.
 
 > [!NOTE]
 > The team currently states that Doubao Seed Code 2.0 cannot be included in the international version due to legal compliance reasons. It's unclear whether they're working on a possible GLM release for the international version.
-However, they haven't been able to provide any details regarding the new Qwen 3.5 model at this time..
-
+However, they haven't been able to provide any details regarding the new Qwen 3.5 & Gemini 3.1 model at this time.
 
 ---
 
