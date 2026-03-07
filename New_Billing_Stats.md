@@ -40,7 +40,8 @@ This document provides a technical breakdown of real consumption data from inten
 
 To help the community understand their token consumption and optimize their costs, I have built a custom **TRAE Billing Stats Analyzer**. This tool allows you to import your usage data and get a full breakdown of your efficiency, projected costs, and model distribution.
 
-![TRAE Billing Stats Tool](https://github.com/user-attachments/assets/fcb9c79f-1dd0-4fff-b050-237840735363)
+<img width="1142" height="901" alt="image" src="https://github.com/user-attachments/assets/6b532cd7-6142-4607-b31c-99a4bd665d2e" />
+
 
 ### 🚀 Try it yourself:
 You can find the tool in this repository:
