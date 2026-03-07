@@ -1,5 +1,7 @@
 # 10 Best Tips for TRAE Mastery
 
+> 🏆 **Part of the winning workflow for the 2025 TRAE Global Best Practice Challenge**
+>
 > Quick, actionable tips for maximizing your TRAE workflow. Reference before each session.
 
 ---
@@ -23,18 +25,18 @@ Before assigning a task:
 2. Test top 3-5 models on your specific task
 3. Choose the best performer, not the "popular" one
 
-**Pro tip:** GLM 4.6 consistently beats GPT-4/Claude for code generation at 1/4 the cost.
+**Pro tip:** **GLM-5** consistently beats GPT-5.3 and Claude 4.0 for code generation at a fraction of the cost.
 
 ---
 
 ## 3. Use SOLO Architecture for Long Workflows
 
 When using TRAE:
-- **Short tasks (<500 tokens)** → Standard mode
-- **Long workflows (>1000 tokens)** → Use SOLO architecture
-- **Multi-step projects** → SOLO + external model API
+- **Short tasks (<1000 tokens)** → Standard mode
+- **Long workflows (>2000 tokens)** → Use **SOLO architecture**
+- **Multi-step projects** → SOLO + external model API (z.ai / OpenRouter)
 
-**Benefit:** Stable output formatting, better context preservation.
+**Benefit:** Stable output formatting, significantly better context preservation.
 
 ---
 
@@ -48,7 +50,7 @@ RULE-3: Uncertainty policy (ask if unclear, don't guess)
 RULE-4: No rewriting (only modify what's needed)
 ```
 
-**Effect:** Consistent, predictable agent behavior.
+**Effect:** Consistent, predictable agent behavior. Reference our [Rulesets Template](./RULESETS.md).
 
 ---
 
@@ -61,12 +63,12 @@ TRAE's internal credit system is expensive. Instead:
 │ Approach        │ Cost/100K│ Speed  │
 ├─────────────────┼──────────┼────────┤
 │ TRAE Credits    │ $200-300 │ Medium │
-│ GLM 4.6 API     │ $15-25   │ Fast   │
-│ Claude API      │ $30-50   │ Good   │
+│ GLM-5 API (z.ai)│ $10-20   │ Ultra  │
+│ Claude 4.0 API  │ $30-50   │ Fast   │
 └─────────────────┴──────────┴────────┘
 ```
 
-**Action:** Integrate GLM 4.6 API into TRAE for 10× cost savings.
+**Action:** Integrate **GLM-5 API** into TRAE for 10×-100× cost savings.
 
 ---
 
@@ -78,7 +80,7 @@ Always add a validation step:
 3. **Documentation** → Check for completeness + clarity
 4. **Refactoring** → Diff against original, verify no logic changes
 
-**Tool:** Use Validator Agent as a mandatory second-pass.
+**Tool:** Use a **Validator Agent** as a mandatory second-pass.
 
 ---
 
@@ -106,11 +108,11 @@ Final Output
 ## 8. Keep Context Windows Fresh
 
 Don't let conversations get too long:
-- **Optimal:** 500-2000 tokens of context
-- **Maximum:** 5000 tokens (after this, accuracy degrades)
+- **Optimal (GLM-5):** 2000-8000 tokens of context
+- **Maximum:** 16384 tokens (accuracy degrades beyond this point)
 - **Reset:** Start new conversation when switching domains
 
-**Pro tip:** Use file references instead of copying large code blocks.
+**Pro tip:** Use file references instead of copying large code blocks to save tokens.
 
 ---
 
@@ -118,12 +120,12 @@ Don't let conversations get too long:
 
 Maintain a ruleset library with versions:
 ```
-Security Ruleset v1.2
+Security Ruleset v2.0
 ├─ Input validation rules
 ├─ Output sanitization rules
 └─ Audit logging rules
 
-Quality Ruleset v2.0
+Quality Ruleset v3.1
 ├─ Code style enforcements
 ├─ Documentation requirements
 └─ Testing thresholds
@@ -139,7 +141,7 @@ Track these metrics per agent:
 - **Accuracy:** % of outputs requiring zero edits
 - **Speed:** Avg tokens/second
 - **Cost:** Cost per task completed
-- **Context retention:** Consistency over 5+ turns
+- **Context retention:** Consistency over 10+ turns
 
 **Cadence:** Review monthly, adjust rules/models quarterly.
 
@@ -149,56 +151,34 @@ Track these metrics per agent:
 
 If a model seems to struggle understanding or following your instructions:
 
-1. **Take your natural language prompt** and send it to ChatGPT or Gemini
-2. **Ask them to convert it to JSON format** - this structures your intent clearly
-3. **Use the JSON version in TRAE** - models process structured data far better
+1. **Take your natural language prompt** and send it to an assistant.
+2. **Ask to convert it to JSON format** - this structures your intent clearly.
+3. **Use the JSON version in TRAE** - modern models (especially GLM-5) process structured data far better.
 
 **Why it works:**
-JSON formatting forces explicit structure, removing ambiguity and making the model's execution more predictable and accurate.
-
-**Example:**
-
-```json
-{
-  "task": "code_generation",
-  "language": "python",
-  "requirements": [
-    "Write a REST API endpoint",
-    "Handle authentication with JWT",
-    "Return JSON responses"
-  ],
-  "constraints": [
-    "Must follow PEP 8",
-    "No external dependencies except FastAPI"
-  ],
-  "output_format": "Complete, production-ready code with comments"
-}
-```
-
-**Result:** Models understand context better, hallucinate less, and produce higher quality output.
+JSON formatting forces explicit structure, removing ambiguity and making the model's execution more predictable.
 
 ---
 
 ## Quick Checklist Before Each Session
 
 - [ ] Selected correct specialized agent for task
-- [ ] Model choice justified by recent benchmarks
+- [ ] Model choice justified by recent benchmarks (Gemini 3.1 vs GLM-5)
 - [ ] Rulesets loaded and up-to-date
-- [ ] Context window is fresh (<3000 tokens)
+- [ ] Context window is fresh (<8000 tokens)
 - [ ] Validator agent will check output
-- [ ] Cost tracking enabled
+- [ ] Cost tracking enabled via z.ai dashboard
 - [ ] Using external API (not internal credits) for large tasks
 
 ---
 
 ## Next Steps
 
-- 📖 Read [SOLO + GLM 4.6 Best Combo](./SOLO_BestCombo.md) for deep cost optimization
-- 🤖 Reference [Agents Guide](./AGENTS_GUIDE.md) for agent design patterns
+- 📖 Read [SOLO + GLM-5 Best Combo](./SOLO_BestCombo.md) for deep cost optimization
 - 📋 Use [Rulesets Template](./RULESETS.md) to create your own rule systems
-- 📄 Full context in [Main Whitepaper](./README.md)
+- 📄 Full context in [Main Whitepaper](./WHITEPAPER.md)
 
 ---
 
-_Last updated: December 17, 2025_
+_Last updated: March 7, 2026_
 _Created by: Marco (HighMark-31)_

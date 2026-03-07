@@ -1,32 +1,37 @@
-# 🐧 TRAE for Linux — Coming Soon
+# 🐧 TRAE for Linux — Update & Status
+
+> 🏆 **Part of the winning workflow for the 2025 TRAE Global Best Practice Challenge**
 
 ## Current status : 
 
-## 🔴​ NOT PUBLIC Release - Internal Testing 🔴​
+## � Internal Testing CONCLUDED — Preparing for Release �
 
-TRAE for **Linux** is currently in **internal testing**.
+According to the latest spoilers and leaks from the **TRAE Team**, the internal testing phase for the Linux version has been **successfully completed**.
 
-The TRAE team is actively working on bringing full Linux support, and development is **ongoing**. This phase is focused on stability, compatibility, and overall user experience across Linux environments.
+The technical development is now considered stable, and the project has been handed over to the **marketing and distribution departments** to coordinate the official launch.
 
 ---
 
-## 🚧 Public beta availability
+## 🚧 Public Release Expectation
 
-At the moment, there are **no official announcements** regarding the release of a **public beta** for Linux.
-
-While a public testing phase has not yet been scheduled, we can confirm that **Linux support is a priority** and that the team is **actively developing and testing it internally**.
+While a specific date has not been officially confirmed, the transition to the marketing stage indicates that:
+- The core engine is ready for Linux environments.
+- Distribution channels (Snap, Flatpak, AppImage, or .deb/.rpm) are being finalized.
+- Official documentation and landing pages are being prepared.
 
 ---
 
 ## ✅ What we know so far
 
-- TRAE for Linux **exists** and is in internal testing
-- The TRAE team is **actively working on it**
-- No public beta release date has been announced yet
-- More information will be shared once the project is ready
+- **Internal testing is over**: The phase focused on stability and compatibility is done.
+- **Active Preparation**: The team is now working on the release logistics.
+- **Priority**: Linux support remains a high priority to complete the cross-platform ecosystem of TRAE.
 
 ---
 
 ## 📢 Stay tuned
 
-Updates regarding Linux availability will be shared as soon as official information becomes available.
+We expect an official announcement very soon. Follow the community channels for the download link as soon as it goes live!
+
+---
+_Last updated: March 7, 2026_

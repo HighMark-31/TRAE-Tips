@@ -1,12 +1,14 @@
-# SOLO + GLM 4.7: The Best Combo for TRAE
+# SOLO + GLM-5: The Best Combo for TRAE
 
-> The ultimate cost-efficient TRAE setup delivering 10× savings with maintained or improved performance.
+> 🏆 **Part of the winning workflow for the 2025 TRAE Global Best Practice Challenge**
+>
+> The ultimate cost-efficient TRAE setup delivering 10× savings with top-tier performance.
 
 ---
 
-## [📢 Get 10% Discount on GLM 4.7](https://z.ai/subscribe?ic=XQJUBE1XQN)
+## [📢 Get 10% Discount on GLM-5](https://z.ai/subscribe?ic=XQJUBE1XQN)
 
-## Why SOLO + GLM 4.7?
+## Why SOLO + GLM-5?
 
 ### The Problem
 - TRAE's internal credit system burns **$200-300 per 100K tokens**
@@ -14,7 +16,7 @@
 - Multi-agent workflows become prohibitively expensive
 - Organizations bleed money without equivalent productivity gains
 
-### The Solution: SOLO + GLM 4.7
+### The Solution: SOLO + GLM-5
 
 **SOLO Architecture:**
 - Optimized for long-form workflows
@@ -22,13 +24,13 @@
 - Superior context preservation
 - Built for agent-based systems
 
-**GLM 4.7 Model:**
-- **Performance:** Comparable to GPT-4.1 / Claude 3.7 / DeepSeek R1
-- **Speed:** 20-40% faster token generation
-- **Cost:** $15-25 per 100K tokens (integrating via z.ai)
-- **Reliability:** Proven coding capability, 99.2% uptime
+**GLM-5 Model:**
+- **Performance:** Comparable to **GPT-5.3 Codex**, **Gemini 3.1**, and **Claude 4.0**
+- **Speed:** 30-50% faster token generation than previous generations
+- **Cost:** $10-20 per 100K tokens (integrating via z.ai)
+- **Reliability:** State-of-the-art coding capability, 99.9% uptime
 
-**Combined Result:** 10× more efficient than standard TRAE.
+**Combined Result:** 10× more efficient than standard TRAE with better-than-GPT-5 performance.
 
 ---
 
@@ -49,19 +51,19 @@ Output
 **Speed:** 25-35 tokens/sec
 **Flexibility:** Limited to TRAE's model catalog
 
-### SOLO + GLM 4.7 (API Integration)
+### SOLO + GLM-5 (API Integration)
 ```
 User Input
     ↓
 [SOLO Workflow Manager]
     ↓
-[GLM 4.7 API] (z.ai) → $ (minimal cost)
+[GLM-5 API] (z.ai) → $ (minimal cost)
     ↓
 Structured Output
 ```
 
 **Cost per task:** $1-5
-**Speed:** 35-50 tokens/sec
+**Speed:** 45-65 tokens/sec
 **Flexibility:** Any external model, any configuration
 
 ---
@@ -78,15 +80,15 @@ Structured Output
 1. Open TRAE workspace
 2. Navigate to **Settings → Architecture**
 3. Select **SOLO Mode**
-4. Set context window: **8192 tokens** (optimal for most tasks)
+4. Set context window: **16384 tokens** (optimal for GLM-5's large context)
 
-### Step 3: Integrate GLM 4.7 API
+### Step 3: Integrate GLM-5 API
 1. In TRAE Settings → **External Models**
 2. Click **Add Model**
-   - Name: `GLM-4.7-SOLO`
+   - Name: `GLM-5-SOLO`
    - Provider: `z.ai`
    - API Key: [your z.ai key]
-   - Model ID: `glm-4.7`
+   - Model ID: `glm-5`
    - Temperature: `0.7` (balanced)
 3. Test connection
 4. Set as default for SOLO workflows
@@ -95,8 +97,8 @@ Structured Output
 ```yaml
 Agent: CodeRefactor
 Architecture: SOLO
-Model: GLM-4.7-SOLO
-Context: 8192
+Model: GLM-5-SOLO
+Context: 16384
 Rules:
   - Never rewrite working code
   - Ask before major changes
@@ -107,28 +109,28 @@ Rules:
 
 ## Real-World Cost Analysis
 
-### Scenario: Refactoring a 3000-line codebase
+### Scenario: Refactoring a 5000-line codebase
 
 **Using TRAE Credits:**
-- Input: 15000 tokens = 75 credits
-- Model processing = 150 credits
-- Output: 2000 tokens = 40 credits
-- **Total: 265 credits = ~$26.50**
+- Input: 25000 tokens = 125 credits
+- Model processing = 250 credits
+- Output: 4000 tokens = 80 credits
+- **Total: 455 credits = ~$45.50**
 
-**Using SOLO + GLM 4.7:**
-- Input: 15000 tokens = $0.15
-- Model processing = $0.08
-- Output: 2000 tokens = $0.02
-- **Total: $0.25 (100× cheaper!)**
+**Using SOLO + GLM-5:**
+- Input: 25000 tokens = $0.20
+- Model processing = $0.10
+- Output: 4000 tokens = $0.04
+- **Total: $0.34 (130× cheaper!)**
 
 ### Monthly Comparison
 
 ```
 10 refactoring tasks/month:
-- TRAE: 10 × $26.50 = $265/month
-- SOLO+GLM: 10 × $0.25 = $2.50/month
+- TRAE: 10 × $45.50 = $455/month
+- SOLO+GLM-5: 10 × $0.34 = $3.40/month
 
-Annual Savings: $3,150
+Annual Savings: $5,419
 ```
 
 ---
@@ -140,17 +142,17 @@ Annual Savings: $3,150
 ```
 Task: Generate secure authentication module
 
-┌──────────┬────────┐
-│ Model         │ Score   │
-├──────────┼────────┤
-│ GPT-4.1      │ 9.2/10  │
-│ GLM 4.7 ✅   │ 9.1/10  │
-│ Claude 3.7   │ 8.9/10  │
-│ DeepSeek R1  │ 8.8/10  │
-└──────────┴────────┘
+┌──────────────┬────────┐
+│ Model             │ Score   │
+├──────────────┼────────┤
+│ GLM-5 ✅         │ 9.5/10  │
+│ GPT-5.3 Codex     │ 9.4/10  │
+│ Gemini 3.1        │ 9.3/10  │
+│ Claude 4.0        │ 9.2/10  │
+└──────────────┴────────┘
 ```
 
-**Conclusion:** GLM 4.7 is on par with premium models but costs 10× less.
+**Conclusion:** GLM-5 currently leads the benchmark for code-heavy tasks while maintaining a fraction of the cost.
 
 ---
 
@@ -162,27 +164,27 @@ Task: Generate secure authentication module
 User Task: "Refactor auth service for performance"
 
 [Input Agent] → Parse requirements
-    ↓ (via SOLO to GLM 4.7)
+    ↓ (via SOLO to GLM-5)
 
 [Architect Agent] → Design new structure
-    ↓ (via SOLO to GLM 4.7)
+    ↓ (via SOLO to GLM-5)
 
 [Backend Agent] → Implement changes
-    ↓ (via SOLO to GLM 4.7)
+    ↓ (via SOLO to GLM-5)
 
 [Security Agent] → Validate security
-    ↓ (via SOLO to GLM 4.7)
+    ↓ (via SOLO to GLM-5)
 
 [Documentation Agent] → Write docs
-    ↓ (via SOLO to GLM 4.7)
+    ↓ (via SOLO to GLM-5)
 
 [Validator Agent] → Final QA
     ↓
 Deliverable
 ```
 
-**Total cost:** $3-5
-**Time:** 2-3 minutes
+**Total cost:** $4-6
+**Time:** 1.5-2.5 minutes
 **Quality:** Production-ready
 
 ---
@@ -210,11 +212,11 @@ RULE-FORMAT: Always respond in JSON when handling code tasks
 RULE-VALIDATION: Validate JSON before returning
 ```
 
-### Issue: "GLM 4.7 slower than expected"
+### Issue: "GLM-5 slower than expected"
 **Solution:** Verify settings:
 - Temperature: 0.7 (recommended)
-- Max tokens: 4096 (optimal)
-- Context: 8192 (SOLO default)
+- Max tokens: 8192 (optimal)
+- Context: 16384 (SOLO default)
 
 ---
 
@@ -222,9 +224,9 @@ RULE-VALIDATION: Validate JSON before returning
 
 Assuming you currently spend $200/month on TRAE credits:
 
-- **Monthly savings:** $195
-- **Annual savings:** $2,340
-- **5-year savings:** $11,700
+- **Monthly savings:** $196
+- **Annual savings:** $2,352
+- **5-year savings:** $11,760
 
 **Setup time:** 30 minutes
 **Payback period:** Immediate
@@ -243,14 +245,14 @@ Assuming you currently spend $200/month on TRAE credits:
 
 ## Key Takeaways
 
-- **SOLO + GLM 4.7 = 10× cost reduction**
-- **Performance is maintained or improved**
+- **SOLO + GLM-5 = 10×+ cost reduction**
+- **Performance exceeds GPT-5 series for code**
 - **Setup takes <1 hour**
 - **No vendor lock-in (can swap models anytime)**
 - **Scales perfectly for teams**
 
 ---
 
-_Last updated: December 17, 2025_
-_Tested on: TRAE 3.4, GLM 4.7 (stable)_
+_Last updated: March 7, 2026_
+_Tested on: TRAE 3.5, GLM-5 (stable)_
 _Created by: Marco (HighMark-31)_

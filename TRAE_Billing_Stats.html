@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trae Billing Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #32F08C;
+            --bg: #0A0B0D;
+            --card: rgba(18, 18, 20, 0.8);
+            --border: rgba(50, 240, 140, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .glass {
+            background: var(--card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+        }
+
+        .neon-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(50, 240, 140, 0.3);
+        }
+
+        .neon-border {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 15px rgba(50, 240, 140, 0.1);
+        }
+
+        .neon-bg {
+            background-color: var(--primary);
+            color: #000;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        canvas {
+            filter: drop-shadow(0 0 20px rgba(50, 240, 140, 0.1));
+        }
+    </style>
+</head>
+
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-[1600px] mx-auto">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+            <div class="flex items-center gap-4">
+                <div
+                    class="h-12 w-12 neon-bg rounded-xl flex items-center justify-center font-black text-2xl shadow-lg shadow-[#32F08C]/20">
+                    T</div>
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tighter">TRAE <span class="neon-text uppercase">Billing
+                            Calculator</span></h1>
+                    <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Advanced Cost
+                        Optimizer by HighMark Marco N.</p>
+                </div>
+            </div>
+            <button onclick="openTutorial()"
+                class="px-5 py-3 border border-slate-700 hover:border-blue-500 rounded-xl font-bold transition-all flex items-center gap-2 group text-xs text-slate-400">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                How to use?
+            </button>
+            <input type="file" id="fileInput" accept=".json" class="hidden">
+            <button onclick="document.getElementById('fileInput').click()"
+                class="px-6 py-3 border border-slate-700 hover:border-[#32F08C] rounded-xl font-bold transition-all flex items-center gap-2 group">
+                <svg class="w-5 h-5 group-hover:text-[#32F08C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+                Import Usage Data
+            </button>
+        </header>
+
+        <div id="statsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 hidden">
+            <div class="glass p-7 rounded-3xl border-l-4 border-[#32F08C]">
+                <p class="text-slate-500 text-xs uppercase font-bold tracking-widest mb-2">Total Managed Spend</p>
+                <h3 id="totalCost" class="text-4xl font-black neon-text">$0.00</h3>
+                <div id="costProjection" class="mt-4 text-[10px] text-slate-500 space-y-1 mono uppercase opacity-70">
+                </div>
+            </div>
+            <div class="glass p-7 rounded-3xl border-l-4 border-blue-500">
+                <p class="text-slate-500 text-xs uppercase font-bold tracking-widest mb-2">Analysis Scope</p>
+                <h3 id="totalSessions" class="text-4xl font-black">0 Sessions</h3>
+                <p class="text-xs text-slate-500 mt-2" id="dateRangeText">Historical range not set</p>
+            </div>
+            <div class="glass p-7 rounded-3xl border-l-4 border-amber-500">
+                <p class="text-slate-500 text-xs uppercase font-bold tracking-widest mb-2">Efficiency Rating</p>
+                <h2 id="efficiencyScore" class="text-4xl font-black text-amber-500">A</h2>
+                <div class="flex justify-between mt-3 text-xs mono text-slate-500">
+                    <span id="tokenRatio">Out/In Ratio: 0.00</span>
+                    <span id="totalTokens">0.0M Tokens</span>
+                </div>
+            </div>
+            <div class="glass p-7 rounded-3xl border-l-4 border-red-500 cursor-pointer hover:bg-red-500/5 transition-all group"
+                onclick="openOutliersModal()">
+                <div class="flex justify-between items-start">
+                    <p class="text-slate-500 text-xs uppercase font-bold tracking-widest mb-2 text-red-400">Inefficient
+                        Blocks</p>
+                    <span class="text-[10px] neon-text font-black group-hover:translate-x-1 transition-transform">VIEW
+                        ALL →</span>
+                </div>
+                <h3 id="outlierCount" class="text-4xl font-black text-red-500">0</h3>
+                <p class="text-[10px] text-slate-500 mt-2 uppercase">Identified for optimization</p>
+            </div>
+        </div>
+
+        <div id="mainContent" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1 space-y-8">
+                    <div class="glass p-6 rounded-3xl relative overflow-hidden flex flex-col">
+                        <h4 class="text-lg font-bold mb-4 flex items-center gap-2">
+                         Cost Simulator
+                        </h4>
+                        <div class="space-y-4 flex-1">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label
+                                        class="text-[10px] text-slate-500 uppercase font-bold mb-1 block">From</label>
+                                    <select id="simSource"
+                                        class="w-full bg-[#111] border border-slate-800 rounded-xl p-2.5 outline-none focus:border-[#32F08C] text-xs">
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-slate-500 uppercase font-bold mb-1 block">To</label>
+                                    <select id="simTarget"
+                                        class="w-full bg-[#111] border border-slate-800 rounded-xl p-2.5 outline-none focus:border-[#32F08C] text-xs font-bold text-[#32F08C]">
+                                        <option value="flash">⚡ Flash</option>
+                                        <option value="mini">🌱 Mini</option>
+                                        <option value="pro">💎 Pro</option>
+                                        <option value="cheap">🚀 Eco</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div id="simResult" class="bg-[#32F08C]/5 border border-[#32F08C]/20 p-4 rounded-xl hidden">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-500 mb-0.5">Savings</p>
+                                        <h5 id="simSavings" class="text-2xl font-black neon-text">--%</h5>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-[9px] uppercase text-slate-500 mb-0.5">New Total</p>
+                                        <h5 id="simNewTotal" class="text-lg font-bold text-white">$0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="runSimulation()"
+                            class="w-full neon-bg font-black py-3 rounded-xl hover:scale-105 transition-all mt-4 text-xs shadow-lg shadow-[#32F08C]/10">CALCULATE</button>
+                    </div>
+
+                    <div class="glass p-6 rounded-3xl">
+                        <h4 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            📊 Cost Distribution
+                        </h4>
+                        <div class="h-44">
+                            <canvas id="modelPieChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="glass p-6 rounded-3xl">
+                        <h4 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            📈 Daily Usage Trend
+                        </h4>
+                        <div class="h-44">
+                            <canvas id="dailyTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="glass p-8 rounded-3xl">
+                        <h4 class="text-xl font-bold mb-8 flex items-center justify-between">
+                            <span>🔥 Model Efficiency Analytics</span>
+                            <span
+                                class="text-[10px] font-black uppercase text-slate-600 tracking-widest px-3 py-1 bg-white/5 rounded-full">Ranked
+                                by Cost per 1k Out</span>
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead
+                                    class="text-slate-500 text-[10px] uppercase tracking-widest border-b border-slate-800">
+                                    <tr>
+                                        <th class="pb-5">Model Identity</th>
+                                        <th class="pb-5 text-right px-4">Cost Distribution</th>
+                                        <th class="pb-5 text-right px-4">Output Volume</th>
+                                        <th class="pb-5 text-center">Efficiency Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modelEfficiencyBody" class="divide-y divide-slate-800/50"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="glass p-8 rounded-3xl">
+                        <h4 class="text-xl font-bold mb-6 flex items-center gap-2">
+                             Load Heatmap <span
+                                class="text-xs font-normal text-slate-500 uppercase tracking-widest ml-2 opacity-50">Tokens
+                                / Hour</span>
+                        </h4>
+                        <div class="h-64">
+                            <canvas id="heatmapChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass rounded-3xl overflow-hidden shadow-2xl">
+                <div
+                    class="p-8 bg-[#0c0c0e] border-b border-slate-800 flex justify-between items-center flex-wrap gap-6">
+                    <div>
+                        <h4 class="font-bold text-xl flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full neon-bg shadow-[0_0_10px_#32F08C]"></span>
+                            Live Execution Stream
+                        </h4>
+                        <p class="text-[10px] text-slate-500 uppercase font-bold mt-1 tracking-widest">Real-time usage
+                            and anomaly detection</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <select id="modelFilter" onchange="applyFilters()"
+                            class="bg-[#18181b] border border-slate-800 text-xs font-bold rounded-xl px-5 py-3 outline-none focus:border-[#32F08C] transition-all">
+                            <option value="all">ALL MODELS</option>
+                        </select>
+                        <input type="text" id="idFilter" onkeyup="applyFilters()" placeholder="SEARCH SESSION ID..."
+                            class="bg-[#18181b] border border-slate-800 text-xs font-bold rounded-xl px-5 py-3 outline-none focus:border-[#32F08C] transition-all min-w-[200px]">
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-[#08080a] text-[10px] uppercase tracking-widest text-slate-600">
+                            <tr>
+                                <th class="px-8 py-6 font-black cursor-pointer hover:text-white"
+                                    onclick="sortTable('usage_time')">Execution Date</th>
+                                <th class="px-8 py-6 font-black">AI Provider/Model</th>
+                                <th class="px-8 py-6 text-right font-black">Session Spend</th>
+                                <th class="px-8 py-6 text-right font-black">O/I Ratio</th>
+                                <th class="px-8 py-6 font-black">Health Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTableBody" class="divide-y divide-slate-800/20"></tbody>
+                    </table>
+                </div>
+                <div class="p-4 bg-[#08080a] text-center">
+                    <p id="rowCount" class="text-[9px] text-slate-600 uppercase font-black tracking-widest"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="placeholder"
+            class="glass p-24 rounded-[50px] text-center max-w-3xl mx-auto mt-20 border-[#32F08C]/5 shadow-2xl shadow-[#32F08C]/5">
+            <div class="inline-flex p-10 bg-[#32F08C]/5 rounded-[30px] mb-10 relative">
+                <svg class="w-20 h-20 neon-text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="absolute -top-2 -right-2 w-4 h-4 neon-bg rounded-full animate-ping"></div>
+            </div>
+            <h2 class="text-5xl font-black mb-6 tracking-tighter uppercase whitespace-nowrap">TRAE <span
+                    class="neon-text">BILLING ANALYTICS</span></h2>
+            <p class="text-slate-400 text-lg mb-12 font-medium leading-relaxed max-w-xl mx-auto">
+                A tool by <span class="text-white font-bold">HighMark Marco N.</span> to help users understand their
+                <span class="neon-text font-bold">TRAE</span> usage spend.
+                Optimize costs, run simulations, and access advanced analytics that the standard dashboard doesn't
+                provide.
+            </p>
+            <button onclick="document.getElementById('fileInput').click()"
+                class="px-14 py-6 neon-bg text-black font-black text-2xl rounded-[24px] hover:scale-105 transition-all shadow-[0_10px_50px_rgba(50,240,140,0.3)]">
+                BOOT DASHBOARD
+            </button>
+        </div>
+    </div>
+
+    <footer class="mt-20 py-12 border-t border-white/5 text-center">
+        <div class="inline-flex flex-col items-center">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="h-px w-8 bg-slate-800"></span>
+                <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">System Architect</p>
+                <span class="h-px w-8 bg-slate-800"></span>
+            </div>
+            <h4 class="text-lg font-bold">
+                <a href="https://highmark.it" target="_blank" class="hover:text-[#32F08C] transition-colors group">
+                    HighMark <span class="neon-text">Marco N.</span>
+                    <span class="inline-block group-hover:translate-x-1 transition-transform ml-1">→</span>
+                </a>
+            </h4>
+            <p class="text-slate-600 text-[10px] font-bold uppercase mt-2 tracking-widest">
+                Community Legend & <span class="text-slate-400">TRAE Pro User</span> since June 2025
+            </p>
+        </div>
+    </footer>
+    </div>
+
+    <div id="outliersModal" class="modal p-6">
+        <div
+            class="glass w-full max-w-5xl max-h-[90vh] rounded-[48px] flex flex-col overflow-hidden shadow-2xl border-[#32F08C]/20">
+            <div class="p-10 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+                <div>
+                    <h3 class="text-3xl font-black flex items-center gap-4">
+                        <span class="text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]">⚠️</span> Inefficient
+                        Session Optimization
+                    </h3>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mt-2">Identified anomalies
+                        ready for architectural optimization</p>
+                </div>
+                <button onclick="closeOutliersModal()"
+                    class="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all font-black">✕</button>
+            </div>
+            <div id="modalContent" class="p-10 overflow-y-auto space-y-8 bg-black/20">
+            </div>
+        </div>
+    </div>
+
+    <div id="tutorialModal" class="modal p-6 overflow-y-auto">
+        <div class="glass w-full max-w-4xl mx-auto my-10 rounded-[48px] overflow-hidden shadow-2xl border-blue-500/20">
+            <div class="p-10 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+                <div>
+                    <h3 class="text-3xl font-black flex items-center gap-4">
+                        <span class="text-blue-500">📖</span> Getting Started Tutorial
+                    </h3>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mt-2">How to extract your TRAE
+                        billing data</p>
+                </div>
+                <button onclick="closeTutorial()"
+                    class="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all font-black">✕</button>
+            </div>
+
+            <div class="p-10 space-y-12">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-500/20 flex-shrink-0 flex items-center justify-center text-2xl font-black text-blue-500">
+                        1</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold mb-2">Download Data Collector</h4>
+                        <p class="text-slate-400 leading-relaxed mb-4">First, download the script below. This Python
+                            application will securely fetch your data directly from the official TRAE API.</p>
+                        <button onclick="downloadPyScript()"
+                            class="flex items-center gap-2 px-5 py-2.5 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border border-blue-500/30 rounded-xl font-bold transition-all mb-4 text-xs">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download trae_usage_app.py
+                        </button>
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5 text-[10px] mono text-slate-500">
+                            Requirement: Python 3.x + PyQt5 installed (`pip install PyQt5 requests`)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-[#32F08C]/20 flex-shrink-0 flex items-center justify-center text-2xl font-black text-[#32F08C]">
+                        2</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold mb-2">Inspect Network Request</h4>
+                        <p class="text-slate-400 leading-relaxed font-bold">Open <a
+                                href="https://www.trae.ai/account-setting#usage" target="_blank"
+                                class="text-blue-400 underline hover:text-[#32F08C]">TRAE Usage Settings</a> in your
+                            browser and press <span
+                                class="bg-slate-800 px-2 py-0.5 rounded text-white font-mono">F12</span>.</p>
+                        <p class="text-slate-400 leading-relaxed mt-2 text-sm italic">Navigate to the "Network" tab and
+                            look for this specific API call:</p>
+                        <div
+                            class="mt-4 p-3 bg-white/5 rounded-lg border-l-4 border-blue-500 text-[10px] break-all mono text-blue-300">
+                            https://api-us-east.trae.ai/trae/api/v1/pay/query_user_usage_group_by_session
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-amber-500/20 flex-shrink-0 flex items-center justify-center text-2xl font-black text-amber-500">
+                        3</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold mb-2">Extract Credentials (Cookie & JWT)</h4>
+                        <p class="text-slate-400 leading-relaxed mb-4">Click on the request found in Step 2. In the
+                            "Headers" section, find and copy these two values:</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-sm text-slate-300">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                <span class="font-bold">Cookie</span> (The all long string starting with <code
+                                    class="text-amber-500">_ga...</code> or similar)
+                            </li>
+                            <li class="flex items-center gap-3 text-sm text-slate-300">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                <span class="font-bold">Authorization</span> (The JWT token starting with <code
+                                    class="text-amber-500">Bearer ...</code>)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col md:flex-row gap-8 items-center bg-blue-500/5 p-8 rounded-[32px] border border-blue-500/10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-500 flex-shrink-0 flex items-center justify-center text-2xl font-black text-black shadow-lg shadow-blue-500/20">
+                        4</div>
+                    <div class="flex-1">
+                        <h4 class="text-2xl font-black mb-2 uppercase tracking-tighter">Finalize Data Export</h4>
+                        <p class="text-slate-300 leading-relaxed">Paste the values into the <span
+                                class="font-bold text-white">Trae Usage App</span> and click <span
+                                class="text-blue-400 font-black italic underline">"Fetch All Pages"</span>. Save the
+                            resulting JSON file and upload it here!</p>
+                        <button onclick="closeTutorial()"
+                            class="mt-6 px-8 py-3 bg-blue-500 text-black font-black rounded-xl hover:scale-105 transition-all">GOT
+                            IT, LET'S GO!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let rawData = [];
+        let filteredData = [];
+        let sortCol = 'usage_time';
+        let sortDir = -1;
+        let heatmapChart = null;
+
+        document.getElementById('fileInput').addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = event => {
+                try {
+                    rawData = JSON.parse(event.target.result);
+                    initDashboard();
+                } catch (err) { alert("Invalid JSON Payload: " + err.message); }
+            };
+            reader.readAsText(file);
+        });
+
+        function initDashboard() {
+            closeOutliersModal();
+            closeTutorial();
+
+            document.getElementById('placeholder').classList.add('hidden');
+            document.getElementById('statsGrid').classList.remove('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+
+            const models = [...new Set(rawData.map(d => d.model_name))].sort();
+            const select = document.getElementById('modelFilter');
+            const simSource = document.getElementById('simSource');
+
+            select.innerHTML = '<option value="all">ALL MODELS</option>';
+            simSource.innerHTML = '';
+
+            models.forEach(m => {
+                select.add(new Option(m, m));
+                simSource.add(new Option(m, m));
+            });
+
+            applyFilters();
+        }
+
+        function calculateStats(data) {
+            const totalCost = data.reduce((sum, d) => sum + (d.amount_float || 0), 0);
+            let tin = 0, tout = 0;
+            data.forEach(d => { tin += d.extra_info?.input_token || 0; tout += d.extra_info?.output_token || 0; });
+
+            document.getElementById('totalCost').textContent = `$${totalCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+            document.getElementById('totalSessions').textContent = `${data.length.toLocaleString()}`;
+            document.getElementById('totalTokens').textContent = `${((tin + tout) / 1000000).toFixed(1)}M`;
+            document.getElementById('tokenRatio').textContent = `Out/In Ratio: ${(tout / tin || 0).toFixed(4)}`;
+
+            if (data.length > 0) {
+                const minT = Math.min(...data.map(d => d.usage_time));
+                const maxT = Math.max(...data.map(d => d.usage_time));
+                const days = Math.max((maxT - minT) / 86400, 1);
+                const daily = totalCost / days;
+                document.getElementById('costProjection').innerHTML = `
+                    <div class="flex justify-between"><span>PROJECTED MONTH:</span> <span class="text-white font-black">$${(daily * 30).toFixed(2)}</span></div>
+                    <div class="flex justify-between mt-1"><span>PROJECTED YEAR:</span> <span class="text-white font-black">$${(daily * 365).toFixed(0)}</span></div>
+                `;
+                document.getElementById('dateRangeText').textContent = `${new Date(minT * 1000).toLocaleDateString()} — ${new Date(maxT * 1000).toLocaleDateString()}`;
+            }
+
+            renderEfficiency(data);
+            renderHeatmap(data);
+            renderPieChart(data);
+            renderDailyTrend(data);
+            const outliers = detectOutliers(data);
+            document.getElementById('outlierCount').textContent = outliers.length;
+            const ratio = tout / tin || 0;
+            document.getElementById('efficiencyScore').textContent = (ratio > 0.02) ? 'S' : (ratio > 0.005) ? 'A' : 'B';
+            document.getElementById('rowCount').textContent = `${data.length} EXECUTIONS MONITORED`;
+        }
+
+        function detectOutliers(data) {
+            return data.filter(d => {
+                const cost = d.amount_float || 0;
+                const ratio = d.extra_info?.input_token > 0 ? (d.extra_info?.output_token / d.extra_info?.input_token) : 0;
+                return cost > 1.0 || d.extra_info?.input_token > 1000000 || (d.extra_info?.input_token > 100000 && ratio < 0.005);
+            });
+        }
+
+        function getOptimizationSugg(d) {
+            const cost = d.amount_float || 0;
+            const tin = d.extra_info?.input_token || 0;
+            const ratio = tin > 0 ? (d.extra_info?.output_token / tin) : 0;
+
+            if (tin > 1000000) return { title: "Massive Context Bloat", desc: "Detected massive context pass-through. Likely including unused files or deep repo structures.", tips: ["Implement RAG / Vector search", "Optimize context windowing", "Check for recursive file inclusions"] };
+            if (ratio < 0.002) return { title: "Inefficient Output Ratio", desc: "Large input sent for negligible output. High cost/value waste.", tips: ["Summarize history before sending", "Narrow prompt instructions", "Switch to Tier-3 Flash model"] };
+            if (cost > 1.2) return { title: "Premium Spend Anomaly", desc: "High-cost single execution detected on Tier-1 model.", tips: ["Migrate task to Mini/Flash", "Validate necessity of long output"] };
+            return { title: "Custom Anomaly", desc: "Session flagged for general inefficiency review.", tips: ["Review chat history", "Optimize prompt structure"] };
+        }
+
+        function openOutliersModal() {
+            const modal = document.getElementById('outliersModal');
+            const content = document.getElementById('modalContent');
+            const outliers = detectOutliers(rawData);
+
+            content.innerHTML = outliers.length === 0 ? '<div class="text-center py-24 text-slate-600 font-black uppercase tracking-widest">System optimized. No anomalies.</div>' : '';
+
+            outliers.slice(0, 20).forEach(d => {
+                const sugg = getOptimizationSugg(d);
+                const div = document.createElement('div');
+                div.className = 'glass p-8 rounded-[32px] border-l-8 border-red-500/50 bg-gradient-to-r from-red-500/5 to-transparent';
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="bg-red-500/20 text-red-500 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Anomaly ⚠</span>
+                                <span class="text-slate-500 text-[10px] mono uppercase font-bold">${d.session_id}</span>
+                            </div>
+                            <h5 class="text-2xl font-black text-white">${sugg.title}</h5>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-3xl font-black text-red-500">$${d.amount_float.toFixed(3)}</span>
+                            <span class="text-[10px] text-slate-500 font-bold uppercase">Impact Score: HIGH</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 font-medium mb-8 leading-relaxed max-w-2xl">${sugg.desc}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white/[0.03] p-6 rounded-2xl border border-white/5">
+                            <p class="text-[10px] text-[#32F08C] font-black mb-4 uppercase tracking-tighter">Recommended Architecture</p>
+                            <ul class="space-y-3">
+                                ${sugg.tips.map(t => `<li class="flex items-start gap-3 text-xs font-semibold text-slate-200 uppercase">
+                                    <span class="text-[#32F08C]">▸</span> ${t}
+                                </li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="bg-[#32F08C]/5 p-6 rounded-2xl border border-[#32F08C]/10 flex flex-col justify-center">
+                            <p class="text-[10px] text-white/50 font-black mb-1 uppercase tracking-tighter">Simulated Cost Reduction</p>
+                            <p class="text-5xl font-black neon-text">~78%</p>
+                            <p class="text-[9px] text-slate-500 mt-3 font-bold uppercase tracking-widest">Projected via Flash Tier-3 Switch</p>
+                        </div>
+                    </div>
+                `;
+                content.appendChild(div);
+            });
+            modal.style.display = 'flex';
+        }
+
+        function closeOutliersModal() { document.getElementById('outliersModal').style.display = 'none'; }
+
+        function renderEfficiency(data) {
+            const metrics = {};
+            data.forEach(d => {
+                if (!metrics[d.model_name]) metrics[d.model_name] = { cost: 0, out: 0, in: 0 };
+                metrics[d.model_name].cost += d.amount_float || 0;
+                metrics[d.model_name].out += d.extra_info?.output_token || 0;
+                metrics[d.model_name].in += d.extra_info?.input_token || 0;
+            });
+
+            const body = document.getElementById('modelEfficiencyBody');
+            body.innerHTML = '';
+            Object.entries(metrics).sort((a, b) => b[1].cost - a[1].cost).forEach(([name, m]) => {
+                const eff = m.out > 0 ? (m.cost / (m.out / 1000)) : 0;
+                let score = 'F';
+                if (eff < 0.15) score = 'S'; else if (eff < 0.4) score = 'A'; else if (eff < 0.9) score = 'B'; else score = 'C';
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-white/[0.03] transition-all group';
+                tr.innerHTML = `
+                    <td class="py-6 px-2 font-bold text-white text-lg">${name}</td>
+                    <td class="py-6 px-4 text-right mono text-xl font-bold text-slate-200">$${m.cost.toFixed(2)}</td>
+                    <td class="py-6 px-4 text-right mono text-sm text-slate-500">${(m.out / 1000).toFixed(0)}k <span class="text-[9px]">TOKENS</span></td>
+                    <td class="py-6 text-center">
+                        <div class="inline-flex flex-col items-center">
+                            <span class="px-4 py-1.5 rounded-xl font-black text-sm ${score === 'S' ? 'neon-bg shadow-[0_0_15px_#32F08C22]' : 'bg-slate-800 text-slate-400'}">${score}</span>
+                            <span class="text-[9px] mt-2 font-bold text-slate-600 uppercase mono">$${eff.toFixed(4)}/1k</span>
+                        </div>
+                    </td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
+        function renderHeatmap(data) {
+            const hours = new Array(24).fill(0);
+            data.forEach(d => {
+                const hour = new Date(d.usage_time * 1000).getHours();
+                hours[hour] += (d.extra_info?.input_token + d.extra_info?.output_token) || 0;
+            });
+
+            const ctx = document.getElementById('heatmapChart').getContext('2d');
+            if (heatmapChart) heatmapChart.destroy();
+            heatmapChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: hours.map((_, i) => `${i}:00`),
+                    datasets: [{
+                        label: 'Total Tokens',
+                        data: hours,
+                        backgroundColor: '#32F08C',
+                        hoverBackgroundColor: '#ffffff',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#111', titleFont: { size: 10 }, bodyFont: { size: 12, weight: 'bold' } } },
+                    scales: {
+                        y: { display: false, grid: { display: false } },
+                        x: { grid: { display: false }, ticks: { color: '#444', font: { size: 10, weight: '900' } } }
+                    }
+                }
+            });
+        }
+
+        let modelPieChartInst = null;
+        function renderPieChart(data) {
+            const costs = {};
+            data.forEach(d => {
+                costs[d.model_name] = (costs[d.model_name] || 0) + d.amount_float;
+            });
+
+            const ctx = document.getElementById('modelPieChart').getContext('2d');
+            if (modelPieChartInst) modelPieChartInst.destroy();
+            modelPieChartInst = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(costs),
+                    datasets: [{
+                        data: Object.values(costs),
+                        backgroundColor: ['#32F08C', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444', '#06b6d4'],
+                        borderWidth: 0,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#666', font: { size: 9 }, boxWidth: 10 } }
+                    },
+                    cutout: '75%'
+                }
+            });
+        }
+
+        let dailyTrendChartInst = null;
+        function renderDailyTrend(data) {
+            const days = {};
+            const sorted = [...data].sort((a, b) => a.usage_time - b.usage_time);
+
+            sorted.forEach(d => {
+                const date = new Date(d.usage_time * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+                if (!days[date]) days[date] = { sessions: 0, cost: 0 };
+                days[date].sessions++;
+                days[date].cost += d.amount_float || 0;
+            });
+
+            const ctx = document.getElementById('dailyTrendChart').getContext('2d');
+            if (dailyTrendChartInst) dailyTrendChartInst.destroy();
+            dailyTrendChartInst = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(days),
+                    datasets: [{
+                        label: 'Sessions',
+                        data: Object.values(days).map(v => v.sessions),
+                        backgroundColor: 'rgba(50, 240, 140, 0.2)',
+                        borderColor: '#32F08C',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Cost ($)',
+                        data: Object.values(days).map(v => v.cost),
+                        type: 'line',
+                        borderColor: '#f59e0b',
+                        borderWidth: 2,
+                        pointRadius: 2,
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: '#666', font: { size: 8 }, boxWidth: 8 } }
+                    },
+                    scales: {
+                        y: { position: 'left', grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#444', font: { size: 8 } } },
+                        y1: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', font: { size: 8 } } },
+                        x: { grid: { display: false }, ticks: { color: '#444', font: { size: 8 } } }
+                    }
+                }
+            });
+        }
+
+        function runSimulation() {
+            const sourceModel = document.getElementById('simSource').value;
+            const targetType = document.getElementById('simTarget').value;
+            const sourceData = rawData.filter(d => d.model_name === sourceModel);
+            const sourceCost = sourceData.reduce((s, d) => s + (d.amount_float || 0), 0);
+            if (!sourceCost) return;
+
+            let factor = 0.28; 
+            if (targetType === 'pro') factor = 2.4;
+            if (targetType === 'mini') factor = 0.18;
+            if (targetType === 'cheap') factor = 0.08;
+
+            const newTotal = sourceCost * factor;
+            const savings = ((sourceCost - newTotal) / sourceCost * 100).toFixed(0);
+
+            const resultBlock = document.getElementById('simResult');
+            resultBlock.classList.remove('hidden');
+            document.getElementById('simSavings').textContent = (savings > 0 ? savings : 0) + '%';
+            document.getElementById('simNewTotal').textContent = `$${newTotal.toFixed(2)}`;
+        }
+
+        function applyFilters() {
+            const mVal = document.getElementById('modelFilter').value;
+            const idVal = document.getElementById('idFilter').value.toLowerCase();
+            filteredData = rawData.filter(d => (mVal === 'all' || d.model_name === mVal) && d.session_id.toLowerCase().includes(idVal));
+            sortData();
+            renderAll();
+        }
+
+        function sortData() { filteredData.sort((a, b) => (a[sortCol] < b[sortCol] ? -1 : 1) * sortDir); }
+        function sortTable(col) {
+            if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = -1; }
+            sortData(); renderAll();
+        }
+
+        function renderAll() {
+            calculateStats(filteredData);
+            const tbody = document.getElementById('dataTableBody');
+            tbody.innerHTML = '';
+            filteredData.slice(0, 100).forEach(d => {
+                const tin = d.extra_info?.input_token || 0;
+                const ratio = tin > 0 ? (d.extra_info?.output_token / tin) : 0;
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-white/[0.015] transition-all text-sm group';
+                tr.innerHTML = `
+                    <td class="px-8 py-6 text-slate-500 font-bold mono text-[11px]">${new Date(d.usage_time * 1000).toLocaleString()}</td>
+                    <td class="px-8 py-6 font-black text-white">${d.model_name}</td>
+                    <td class="px-8 py-6 text-right mono font-black neon-text text-base group-hover:scale-110 transition-transform origin-right">$${(d.amount_float || 0).toFixed(4)}</td>
+                    <td class="px-8 py-6 text-right mono text-xs font-bold ${ratio < 0.005 ? 'text-red-500' : 'text-slate-400'}">${ratio.toFixed(4)}</td>
+                    <td class="px-8 py-6">
+                        <span class="text-[9px] px-3 py-1 rounded-full border ${d.amount_float > 0.5 ? 'border-red-500/50 text-red-500' : 'border-slate-800 text-slate-500'} uppercase font-black tracking-widest bg-black/50">
+                            ${d.amount_float > 1.0 ? '⚠ CRITICAL' : d.amount_float > 0.5 ? 'INEFFICIENT' : 'NOMINAL'}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.onclick = function (event) {
+            const outlierModal = document.getElementById('outliersModal');
+            const tutorialModal = document.getElementById('tutorialModal');
+            if (event.target == outlierModal) closeOutliersModal();
+            if (event.target == tutorialModal) closeTutorial();
+        }
+        function openTutorial() {
+            document.getElementById('tutorialModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTutorial() {
+            document.getElementById('tutorialModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        const PY_SCRIPT = `import sys
+import json
+import threading
+import requests
+import time as time_module
+from datetime import datetime
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
+                             QLabel, QLineEdit, QPushButton, QTextEdit, QProgressBar, 
+                             QDateEdit, QFileDialog, QGroupBox, QFormLayout, QGridLayout)
+from PyQt5.QtCore import Qt, QDate, pyqtSignal, QObject
+
+class WorkerSignals(QObject):
+    log = pyqtSignal(str)
+    status = pyqtSignal(str)
+    progress = pyqtSignal(float)
+    finished = pyqtSignal(list)
+
+class TraeUsageApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Trae API Usage Aggregator (PyQt5)")
+        self.resize(1000, 800)
+        
+        self.aggregated_data = []
+        
+        self.central_widget = QWidget()
+        self.setCentralWidget(self.central_widget)
+        self.main_layout = QHBoxLayout(self.central_widget)
+        
+        self.sidebar = QWidget()
+        self.sidebar.setFixedWidth(320)
+        self.sidebar_layout = QVBoxLayout(self.sidebar)
+        
+        title = QLabel("Trae Usage")
+        title.setStyleSheet("font-size: 24px; font-weight: bold; margin-bottom: 20px;")
+        self.sidebar_layout.addWidget(title)
+        
+        config_group = QGroupBox("Configuration")
+        config_form = QFormLayout()
+        
+        self.jwt_entry = QLineEdit()
+        self.jwt_entry.setEchoMode(QLineEdit.Password)
+        self.jwt_entry.setPlaceholderText("Paste JWT here...")
+        config_form.addRow("JWT:", self.jwt_entry)
+        
+        self.cookie_entry = QLineEdit()
+        self.cookie_entry.setPlaceholderText("Paste Cookie here...")
+        config_form.addRow("Cookie:", self.cookie_entry)
+        
+        self.usage_type_entry = QLineEdit("5,6")
+        config_form.addRow("Usage Types:", self.usage_type_entry)
+
+        self.exclude_entry = QLineEdit("0")
+        config_form.addRow("Exclude Latest N:", self.exclude_entry)
+        
+        config_group.setLayout(config_form)
+        self.sidebar_layout.addWidget(config_group)
+        
+        date_group = QGroupBox("Date Range")
+        date_layout = QVBoxLayout()
+        
+        date_grid = QGridLayout()
+        self.start_date = QDateEdit(QDate.currentDate().addDays(-(datetime.now().day - 1)))
+        self.start_date.setCalendarPopup(True)
+        self.start_date.setDisplayFormat("yyyy-MM-dd")
+        date_grid.addWidget(QLabel("Start:"), 0, 0)
+        date_grid.addWidget(self.start_date, 0, 1)
+        
+        self.end_date = QDateEdit(QDate.currentDate())
+        self.end_date.setCalendarPopup(True)
+        self.end_date.setDisplayFormat("yyyy-MM-dd")
+        date_grid.addWidget(QLabel("End:"), 1, 0)
+        date_grid.addWidget(self.end_date, 1, 1)
+        
+        date_layout.addLayout(date_grid)
+        
+        quick_layout = QHBoxLayout()
+        btn_7d = QPushButton("7 Days")
+        btn_7d.clicked.connect(lambda: self.set_quick_range(7))
+        btn_month = QPushButton("Month")
+        btn_month.clicked.connect(lambda: self.set_quick_range("month"))
+        btn_year = QPushButton("Year")
+        btn_year.clicked.connect(lambda: self.set_quick_range("year"))
+        
+        quick_layout.addWidget(btn_7d)
+        quick_layout.addWidget(btn_month)
+        quick_layout.addWidget(btn_year)
+        date_layout.addLayout(quick_layout)
+        
+        date_group.setLayout(date_layout)
+        self.sidebar_layout.addWidget(date_group)
+        
+        self.fetch_button = QPushButton("Fetch All Pages")
+        self.fetch_button.setStyleSheet("height: 40px; font-weight: bold; background-color: #0078d4; color: white;")
+        self.fetch_button.clicked.connect(self.start_fetching)
+        self.sidebar_layout.addWidget(self.fetch_button)
+        
+        self.sidebar_layout.addStretch()
+        self.main_layout.addWidget(self.sidebar)
+        
+        self.content = QWidget()
+        self.content_layout = QVBoxLayout(self.content)
+        
+        self.status_label = QLabel("Ready")
+        self.status_label.setStyleSheet("font-size: 14px; color: #555;")
+        self.content_layout.addWidget(self.status_label)
+        
+        self.log_text = QTextEdit()
+        self.log_text.setReadOnly(True)
+        self.log_text.setStyleSheet("background-color: #1e1e1e; color: #d4d4d4; font-family: 'Consolas';")
+        self.content_layout.addWidget(self.log_text)
+        
+        self.progress_bar = QProgressBar()
+        self.progress_bar.setValue(0)
+        self.content_layout.addWidget(self.progress_bar)
+        
+        self.save_button = QPushButton("Save Aggregated JSON")
+        self.save_button.setEnabled(False)
+        self.save_button.setFixedHeight(40)
+        self.save_button.clicked.connect(self.save_json)
+        self.content_layout.addWidget(self.save_button)
+        
+        self.main_layout.addWidget(self.content)
+        
+        self.setStyleSheet("""
+            QMainWindow { background-color: #f0f0f0; }
+            QGroupBox { font-weight: bold; border: 1px solid #ccc; border-radius: 5px; margin-top: 10px; padding-top: 15px; }
+            QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 3px; }
+            QLineEdit, QDateEdit { padding: 5px; border: 1px solid #ccc; border-radius: 3px; }
+            QPushButton { padding: 5px; border-radius: 3px; }
+            QPushButton:hover { background-color: #e0e0e0; }
+        """)
+
+    def set_quick_range(self, rtype):
+        end = QDate.currentDate()
+        if rtype == 7:
+            start = end.addDays(-7)
+        elif rtype == "month":
+            start = QDate(end.year(), end.month(), 1)
+        elif rtype == "year":
+            start = QDate(end.year(), 1, 1)
+        self.start_date.setDate(start)
+        self.end_date.setDate(end)
+
+    def log(self, message):
+        timestamp = datetime.now().strftime("%H:%M:%S")
+        self.log_text.append(f"[{timestamp}] {message}")
+        self.log_text.ensureCursorVisible()
+
+    def start_fetching(self):
+        self.fetch_button.setEnabled(False)
+        self.save_button.setEnabled(False)
+        self.log_text.clear()
+        self.progress_bar.setValue(0)
+        self.aggregated_data = []
+        
+        params = {
+            "jwt": self.jwt_entry.text().strip(),
+            "cookie": self.cookie_entry.text().strip(),
+            "start_ts": int(datetime.combine(self.start_date.date().toPyDate(), datetime.min.time()).timestamp()),
+            "end_ts": int(datetime.combine(self.end_date.date().toPyDate(), datetime.max.time()).timestamp()),
+            "usage_types": [int(x.strip()) for x in self.usage_type_entry.text().split(",") if x.strip().isdigit()],
+            "exclude_n": int(self.exclude_entry.text().strip()) if self.exclude_entry.text().strip().isdigit() else 0
+        }
+        
+        if not params["jwt"]:
+            self.log("Error: JWT is required")
+            self.fetch_button.setEnabled(True)
+            return
+
+        self.signals = WorkerSignals()
+        self.signals.log.connect(self.log)
+        self.signals.status.connect(self.status_label.setText)
+        self.signals.progress.connect(lambda v: self.progress_bar.setValue(int(v * 100)))
+        self.signals.finished.connect(self.on_fetch_finished)
+        
+        threading.Thread(target=self.fetch_thread, args=(params,), daemon=True).start()
+
+    def fetch_thread(self, params):
+        url = "https://api-us-east.trae.ai/trae/api/v1/pay/query_user_usage_group_by_session"
+        headers = {
+            "Authorization": f"Cloud-IDE-JWT {params['jwt']}",
+            "Cookie": params['cookie'],
+            "Content-Type": "application/json"
+        }
+        
+        page_num = 1
+        page_size = 20
+        all_records = []
+        
+        self.signals.log.emit("Starting data collection...")
+        
+        while True:
+            payload = {
+                "start_time": params["start_ts"],
+                "end_time": params["end_ts"],
+                "page_size": page_size,
+                "page_num": page_num,
+                "usage_type": params["usage_types"]
+            }
+            
+            try:
+                resp = requests.post(url, headers=headers, json=payload, timeout=15)
+                if resp.status_code != 200:
+                    break
+                
+                data = resp.json()
+                records = data.get("user_usage_group_by_sessions", [])
+                total = data.get("total", 0)
+                
+                if not records:
+                    break
+                
+                all_records.extend(records)
+                
+                if total > 0:
+                    self.signals.progress.emit(min(len(all_records) / total, 1.0))
+                
+                if len(all_records) >= total or len(records) < page_size:
+                    break
+                
+                page_num += 1
+                time_module.sleep(0.5)
+            except Exception:
+                break
+        
+        if params["exclude_n"] > 0 and all_records:
+            all_records.sort(key=lambda x: x.get('usage_time', 0), reverse=True)
+            all_records = all_records[params["exclude_n"]:]
+
+        self.signals.finished.emit(all_records)
+
+    def on_fetch_finished(self, data):
+        self.aggregated_data = data
+        self.fetch_button.setEnabled(True)
+        self.status_label.setText(f"Finished! Total items: {len(data)}")
+        if data:
+            self.save_button.setEnabled(True)
+
+    def save_json(self):
+        name = f"trae_usage_{int(datetime.now().timestamp())}.json"
+        path, _ = QFileDialog.getSaveFileName(self, "Save JSON", name, "JSON Files (*.json)")
+        if path:
+            with open(path, 'w') as f:
+                json.dump(self.aggregated_data, f, indent=4)
+            self.log(f"Saved to {path}")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = TraeUsageApp()
+    window.show()
+    sys.exit(app.exec_())`;
+
+        function downloadPyScript() {
+            const blob = new Blob([PY_SCRIPT], { type: 'text/x-python' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'trae_usage_app.py';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+
+</html>

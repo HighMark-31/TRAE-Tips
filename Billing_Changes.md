@@ -1,108 +1,83 @@
-# TRAE Membership Update — What Actually Changes 🔍
+# TRAE Billing & Token Economy — Official Info & FAQ 📊
 
-TRAE is moving from a **request-based system** to a **token-based system**.
+> 🏆 **Part of the winning workflow for the 2025 TRAE Global Best Practice Challenge**
 
-This affects **everyone**, not just Pro users.
+This document explains the transition from the request-based system to the token-based model, supported by official team images and FAQ.
 
-Let’s break it down clearly.
+---
 
-Image and Link reference :
-<img width="2770" height="1144" alt="image" src="https://github.com/user-attachments/assets/fcb9c79f-1dd0-4fff-b050-237840735363" />
+## 🚀 The Transition: From Requests to Tokens
 
-<img width="2652" height="1126" alt="image" src="https://github.com/user-attachments/assets/3171a6ff-9a66-47e3-af37-1cd94e1b1965" />
+TRAE is moving from a **request-based system** to a **token-based system**. This affects **everyone**, not just Pro users.
 
-https://www.trae.ai/blog/trae_membership_0213
+### Official Team Documentation:
+
+**Blog** : [https://www.trae.ai/blog/trae_membership_0213](https://www.trae.ai/blog/trae_membership_0213)
+
 ---
 
 # 🔁 Before vs Now
 
 ## Before (Request-Based Model)
-- You had a fixed number of Fast Requests.
+- Fixed number of Fast Requests.
 - 1 request = 1 premium model call.
 - Context size didn’t directly impact quota.
 - Simple and predictable.
 
-If you had 600 requests → you could make 600 premium calls.
-
----
-
 ## Now (Token-Based Model)
 - Each plan gives a monthly **$ basic usage balance + bonus usage**.
-- Every interaction consumes tokens based on:
-  - Input size
-  - Output size
-  - Context window
-  - Tool calls
-  - Model choice
-  - Mode (Regular vs Max)
-
-Now:
-
-> 1 interaction ≠ 1 unit.  
-> Heavy sessions cost more tokens.
+- Every interaction consumes tokens based on input/output size, context window, and model choice.
+- **1 interaction ≠ 1 unit.** Heavy sessions cost more tokens.
 
 ---
 
-## ✅ Advantages of the New System
+## 📊 Real Usage Stats
+For a detailed technical breakdown of costs, model efficiency, and token burn from intensive professional usage, please refer to:
 
-### Larger Context Windows
-- Regular Mode: up to ~272K tokens  
-- Max Mode: up to 1M tokens  
-- Up to 200 tool calls per session  
-
-This is a major upgrade for:
-- Large repositories
-- Long agent workflows
-- Complex automation tasks
-
-## ❌ Disadvantages / Trade-Offs
-
-### Less Predictable Usage
-Before:
-- You knew exactly how many calls you had left.
-
-Now:
-- You must monitor token burn.
-- Large contexts consume budget faster.
-
-
-### Heavy Users May Consume Faster
-If you:
-- Use massive repo contexts
-- Run Max mode often
-- Perform long agent sessions
-
-Your monthly allowance may drain faster than expected.
+👉 **[NEW BILLING STATS REPORT](./New_Billing_Stats.md)**
 
 ---
 
-# ⚠️ Focus: What Changes If You Are a Pro User ⚠️
+## 💡 Official Bonus & Subsidy (Pro Users)
 
-If you are currently Pro:
+According to the TRAE Team, the transition is supported by a subsidy:
 
-## 👍 What Improves
-- Larger context windows
-- More technical flexibility
-- Potentially more usable sessions (depending on usage pattern)
-- Stronger SOLO mode capability
-
-## 👎 What Becomes Riskier
-- Token burn replaces fixed request predictability
-- Heavy sessions may consume allowance faster
-- Early Access model access may require upgrading to Ultra
+- **Officially, the Bonus Usage for Pro users is $130.**
+- This is a dynamic subsidy to ensure total usable conversations remain aligned with the previous request-based system.
 
 ---
 
-# 🎯 Final Take
+## ❓ FAQ Bonus Usage – Clear Explanation
 
-Technically → the system is more powerful.  
-Economically → it becomes usage-dependent.
+### 1️⃣ What is Bonus Usage?
+Bonus Usage is **not an extra gift package**. It is a dynamic subsidy that TRAE provides after your Basic Usage is consumed, in order to ensure that your total usable conversations remain roughly aligned with the previous request-based system.
 
-If you:
-- Use moderate prompts → you likely benefit.
-- Run large repo-level workflows daily → monitor token usage carefully.
+### 2️⃣ Is Bonus Usage predictable?
+At the moment, Bonus Usage is calculated dynamically based on your subscription plan and usage behavior. TRAE is working on improving transparency regarding the fixed "cap".
 
-The key is simple:
+### 3️⃣ Will my card be charged automatically when Bonus Usage runs out?
+**No.** Your card will only be charged if your subscription renews, OR you manually activate “On-Demand Usage”. No additional automatic billing occurs otherwise.
 
-Track your real monthly token consumption after transition.  
-Then decide whether your current tier is still optimal.
+### 4️⃣ Why does the new billing feel more expensive?
+Because individual request unit cost is now visible in dollars and larger context windows consume more tokens. Previously, cost was abstracted behind “requests”.
+
+### 5️⃣ Will I get the same amount of conversations as before?
+TRAE’s internal calculation aims for: **Basic Usage + Bonus Usage combined ≈ similar total conversation capacity** compared to the old plan. 
+
+In real-world testing, we demonstrated that **500 high-intensity sessions** under the new system are effectively equivalent to the **600 requests** of the old system. While the number seems slightly lower, this is due to high-consumption usage on complex repositories (both frontend and backend) involving **more than 200 files** and massive context. For standard usage, the capacity remains virtually identical.
+
+---
+
+## 📢 Personal Opinion & Insights (Marco N. - AI Architect)
+
+In these months, I have collaborated closely with the TRAE team, providing continuous feedback on the challenges posed by this new billing system. 
+
+As an **AI Architect**, I am proud of this change. Technically, it is the best possible choice: it removes the abstraction of "requests" and introduces a transparent, usage-based model that reflects the actual compute resources consumed. It enables the use of massive context windows and complex multi-agent workflows that were previously impossible or poorly managed.
+
+The problem, as I have consistently informed the team, was **not the technical implementation of the new billing**, but rather **how it was communicated** and the initial **lack of predictability**. For a long time, users were left in the dark about how their tokens were actually being consumed, until someone could provide a comprehensive report with real usage data and technical breakdowns.
+
+Transparency and predictability are the keys to a professional tool. Now that we have the data, we can see that the system is technically superior, even if its introduction could have been more user-centric.
+
+---
+_Last updated: March 7, 2026_
+_Data source: TRAE Official Blog & HighMark Marco N. Internal Data_
