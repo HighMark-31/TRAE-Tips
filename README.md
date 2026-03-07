@@ -6,6 +6,7 @@
 - [Best Models Guide](./Best_model.md) - Which model to choose for each task
 - [Billing Updates](./Billing_Changes.md) - New token-based membership details
 - [New Billing Stats](./New_Billing_Stats.md) - Real-world usage data and technical analysis
+- [Billing & Token Optimization](./billing_optimization.md) - How to save tokens and reduce costs
 - [Rulesets Template](./RULESETS.md) - Ready-to-use ruleset examples
 
 ---
@@ -41,6 +42,9 @@ Ready-to-use rule templates and system prompts for deterministic agent behavior.
 
 ### 💡 [10 Best Tips](./10BestTips.md)
 Quick, actionable tips for immediate implementation and workflow optimization.
+
+### 📉 [Billing & Token Optimization](./Billing_Optimization.md)
+Detailed strategies for saving tokens, reducing costs, and maximizing your requests.
 
 ---
 
