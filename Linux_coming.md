@@ -4,7 +4,7 @@
 
 ## Current status : 
 
-## � Internal Testing CONCLUDED — Preparing for Release �
+## ⚠️ Internal Testing CONCLUDED — Preparing for Release ⚠️
 
 According to the latest spoilers and leaks from the **TRAE Team**, the internal testing phase for the Linux version has been **successfully completed**.
 
