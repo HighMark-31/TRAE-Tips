@@ -36,7 +36,7 @@ You can create custom Agents and configure:
 
 ---
 
-## 📏 2. Rules
+## [📏 2. Rules](https://github.com/HighMark-31/TRAE-Tips/blob/main/RULESETS.md)
 
 ### What Rules Are
 
