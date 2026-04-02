@@ -56,7 +56,7 @@ According to the docs, the "Coder" goes deep—planning carefully and executing 
 - **Experience:** Essentially brings standard IDE functionalities to the web (similar to Google's AIStudio).
 - **Verdict:** It doesn't quite beat the current competition, especially since it will eventually be paid. Sub-optimal for complex tasks compared to dedicated desktop tools like the Trae IDE itself. **Not particularly useful in real-world, heavy-lifting scenarios.**
 
-### 2. SOLO MTC Mode (Multi-Task Collaboration)
+### 2. SOLO MTC Mode (More Than Coding)
 This is where the platform truly shines. The browser agent orchestrates different steps effectively.
 - **Experience:** Handles generic tasks reasonably well and completes various types of complex workflows with good proficiency.
 - **Performance Note:** Noticeable slowness during execution (likely due to Beta status and server load).
