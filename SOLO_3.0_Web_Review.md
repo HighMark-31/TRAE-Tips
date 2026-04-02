@@ -10,6 +10,8 @@
 
 Before diving into the feedback, let's clarify what SOLO actually is. Accessible via its web interface at [solo.trae.ai](https://solo.trae.ai/) and detailed on the official landing page at [trae.ai/solo](https://www.trae.ai/solo), SOLO represents the evolution from a simple AI coding assistant to a fully-fledged **"AI engineer."**
 
+https://github.com/user-attachments/assets/48e61b08-f006-4fe1-ac7f-6864022e42f5
+
 Trae's vision for SOLO is to break the AI out of the traditional IDE sidebar and give it a native space where it can orchestrate:
 - **Browsers**
 - **Terminals**
